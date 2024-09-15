@@ -316,7 +316,7 @@ abstract class EntryTransactionDetail
                 $charges->setTotalChargesAndTaxAmount($money);
             }
 
-            $chargesRecords = $xmlDetail->Chrgs->Rcrd;
+            $chargesRecords = $xmlDetail->Chrgs->Rcrd ?? $xmlDetail->Chrgs;
             if ($chargesRecords !== null) {
                 /** @var SimpleXMLElement $chargesRecord */
                 foreach ($chargesRecords as $chargesRecord) {
