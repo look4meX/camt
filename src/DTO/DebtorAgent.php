@@ -10,6 +10,8 @@ class DebtorAgent implements RelatedAgentTypeInterface
 
     private string $BIC;
 
+    private ?Address $address = null;
+
     /**
      * CreditorAgent constructor.
      */
@@ -37,5 +39,15 @@ class DebtorAgent implements RelatedAgentTypeInterface
     public function setBIC(string $BIC): void
     {
         $this->BIC = $BIC;
+    }
+
+    public function setAddress(Address $address): void
+    {
+        $this->address = $address;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
     }
 }

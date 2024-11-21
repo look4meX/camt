@@ -142,6 +142,11 @@ abstract class EntryTransactionDetail
             if (isset($xmlRelatedAgent->DbtrAgt)) {
                 $bic = $this->getAgentBic($xmlRelatedAgent->DbtrAgt);
                 $agent = new DTO\DebtorAgent((string) $xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string) $bic);
+
+                if(isset($xmlRelatedAgent->DbtrAgt->FinInstnId->PstlAdr)) {
+                    $agent->setAddress(DTOFactory\Address::createFromXml($xmlRelatedAgent->DbtrAgt->FinInstnId->PstlAdr));
+                }
+
                 $relatedAgent = new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
